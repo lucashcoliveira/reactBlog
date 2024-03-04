@@ -1,11 +1,10 @@
 import React, { useState } from "react";
 
-import Post from "./Post";
-import Header from "./Header";
-import { ThemProvider } from "./ThemeContext";
+import Post from "../Post";
+import Header from "../Header";
+import { ThemProvider } from "../../context/ThemeContext";
 
-import styles from './App.scss'
-
+import { Title } from './style';
 
 function App() {
 
@@ -41,10 +40,10 @@ function App() {
   return (
   <ThemProvider>
     <Header>
-      <h2 className= {styles.title}>
+      <Title as="h2">
         Posts da Semana 
         <button onClick={handleRefresh}>Atualizar</button>
-      </h2>
+      </Title>
     </Header>
       
     <hr />
