@@ -1,4 +1,4 @@
-import React, { useState, useMemo, createContext} from 'react';
+import React, { useState, useMemo, createContext, useEffect} from 'react';
 import { ThemeProvider } from 'styled-components';
 
 import GlobalStyle from './styles/global';
@@ -8,8 +8,26 @@ import themes from './styles/themes';
 
 export const ThemeContext = createContext('dark');
 
+function useLocalState(key, initialValue='dark'){
+  const [state, setState] = useState(()=>{
+    const storedData = localStorage.getItem(key);
+
+    if(storedData){
+      return JSON.parse(storedData)
+    }
+
+      return initialValue
+  });
+
+  useEffect(()=>{
+    localStorage.setItem(key, JSON.stringify(state));
+  },[key, state]);
+  return [state, setState]
+}
+
 function App() {
-  const [theme, setTheme] = useState('dark');
+
+  const [theme, setTheme] = useLocalState();
 
   const currentTheme = useMemo(() => {
     return themes[theme] || themes.dark
