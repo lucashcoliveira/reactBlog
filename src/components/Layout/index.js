@@ -4,18 +4,13 @@ import Header from '../Header';
 import PostsList from '../PostsList';
 import Footer from '../Footer';
 
-export default function Layout({ onToggleTheme,selectedTheme }) {
+
+export default function Layout(props) {
   return (
     <>
-      <Header 
-        onToggleTheme={ onToggleTheme } 
-        selectedTheme={ selectedTheme }
-      />
+      <Header onToggleTheme={props.onToggleTheme} />
       <PostsList />
-      <Footer 
-        onToggleTheme={onToggleTheme}
-        selectedTheme={ selectedTheme }
-      />
+      <Footer onToggleTheme={props.onToggleTheme}  />
     </>
   );
 }
