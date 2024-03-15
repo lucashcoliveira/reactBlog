@@ -2,21 +2,21 @@
 import React, { useContext } from 'react';
 
 import { Container } from './styles';
+import { ThemeContext } from '../../context';
+import themes from '../../styles/themes';
 
-import { ThemeContext } from '../../App';
+export default function Header() {
 
-export default function Header({ onToggleTheme }) {
-
-  const theme  = useContext(ThemeContext)
+  const { handleToggleTheme }  = useContext(ThemeContext)
 
   return (
     <Container>
       <h1>JStack's Blog</h1>
       <button 
         type="button" 
-        onClick={ onToggleTheme }
+        onClick={ handleToggleTheme }
       >
-        {theme === 'dark' ? '🌞' : '🌚'}
+        {themes === 'dark' ? '🌞' : '🌚'}
       </button>
     </Container>
   );

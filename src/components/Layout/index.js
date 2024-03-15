@@ -5,12 +5,12 @@ import PostsList from '../PostsList';
 import Footer from '../Footer';
 
 
-export default function Layout(props) {
+export default function Layout() {
   return (
     <>
-      <Header onToggleTheme={props.onToggleTheme} />
+      <Header />
       <PostsList />
-      <Footer onToggleTheme={props.onToggleTheme}  />
+      <Footer />
     </>
   );
 }
