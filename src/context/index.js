@@ -5,16 +5,14 @@ import GlobalStyle from '../styles/global';
 import themes from "../styles/themes";
 
 
-
-export const ThemeContext = createContext('dark');
+export const  ThemeContext = createContext('dark');
 
 const ThemeProvider = ({children}) =>{
   const [theme, setTheme] = useLocalState();
-
   const currentTheme = useMemo(() => {
     return themes[theme] || themes.dark
   }, [theme]);
-
+  
   function handleToggleTheme(){
     setTheme(prevState => (
       prevState === 'dark' 
@@ -24,13 +22,12 @@ const ThemeProvider = ({children}) =>{
     }
 
   return (
-    <ThemeContext.Provider value={{ handleToggleTheme }}>
+    <ThemeContext.Provider value={{ handleToggleTheme, theme }}>
       <StyledProvider theme={ currentTheme }>
-      <GlobalStyle />
-         {children}
+        <GlobalStyle />
+          {children}
       </StyledProvider>
     </ThemeContext.Provider>
   )
-
 }
 export default ThemeProvider;

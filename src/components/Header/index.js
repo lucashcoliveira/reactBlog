@@ -3,11 +3,9 @@ import React, { useContext } from 'react';
 
 import { Container } from './styles';
 import { ThemeContext } from '../../context';
-import themes from '../../styles/themes';
 
 export default function Header() {
-
-  const { handleToggleTheme }  = useContext(ThemeContext)
+  const { handleToggleTheme, theme }  = useContext(ThemeContext)
 
   return (
     <Container>
@@ -16,8 +14,8 @@ export default function Header() {
         type="button" 
         onClick={ handleToggleTheme }
       >
-        {themes === 'dark' ? '🌞' : '🌚'}
+        {theme === 'dark' ? '🌞' : '🌚'}
       </button>
     </Container>
   );
-}
+};
